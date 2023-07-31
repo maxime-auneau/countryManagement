@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Country} from "../../models/country.model";
 
 @Component({
@@ -6,7 +6,7 @@ import {Country} from "../../models/country.model";
   templateUrl: './country-list.pages.component.html',
   styleUrls: ['./country-list.pages.component.scss']
 })
-export class CountryListPagesComponent {
+export class CountryListPagesComponent implements OnInit {
   countries: Country[] = [];
   displayedCountries: Country[] = [];
   showAddCountryForm: boolean = false;
@@ -16,6 +16,7 @@ export class CountryListPagesComponent {
   createCountry() {
     this.country.id = this.countries.length;
     this.countries.push(this.country);
+    localStorage.setItem('countries', JSON.stringify(this.countries));
     this.country = new Country(0, "", 0, "", "", 0, "");
     this.showAddCountryForm = false;
     this.updateDisplayedCountries();
@@ -38,6 +39,14 @@ export class CountryListPagesComponent {
 
   updatedCountries({index, newCountry}: { index: number, newCountry: Country }): void {
     this.countries[index] = newCountry;
+    localStorage.setItem('countries', JSON.stringify(this.countries));
     this.updateDisplayedCountries();
+  }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('countries')) {
+      this.countries = JSON.parse(localStorage.getItem('countries') as string);
+      this.updateDisplayedCountries();
+    }
   }
 }

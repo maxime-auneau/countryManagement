@@ -1,0 +1,15 @@
+<app-view-header [title]="title"></app-view-header>
+<section class="show-country">
+  <div class="country-container">
+    <div class="country-info">
+      <p class="name">Nom: {{country.nom}}</p>
+      <p class="population">Population: {{country.population}}</p>
+      <p class="superficie">Superficie: {{country.superficie}} m²</p>
+      <p class="continent">Continent: {{country.continent}}</p>
+      <p class="pib">Produit Interieur Brut: {{country.pib}}</p>
+    </div>
+    <div class="country-image">
+      <img [src]="country.image" alt="image of the country" />
+    </div>
+  </div>
+</section>

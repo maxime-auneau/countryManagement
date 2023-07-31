@@ -16,37 +16,37 @@
         <input [(ngModel)]="countryEdited.nom" name="nom" placeholder="Nom du pays" required type="text">
       </td>
       <ng-template #displayNom>
-        <td>{{country.nom}}</td>
+        <td><p class="td-text">{{country.nom}}</p></td>
       </ng-template>
       <td *ngIf="showEditForm && countryIndex === index; else displayPopulation">
         <input [(ngModel)]="countryEdited.population" name="population" placeholder="Population" required type="number">
       </td>
       <ng-template #displayPopulation>
-        <td>{{country.population}}</td>
+        <td><p class="td-text">{{country.population}}</p></td>
       </ng-template>
       <td *ngIf="showEditForm && countryIndex === index; else displaySuperficie">
         <input [(ngModel)]="countryEdited.superficie" name="superficie" placeholder="Superficie" required type="text">
       </td>
       <ng-template #displaySuperficie>
-        <td>{{country.superficie}}</td>
+        <td><p class="td-text">{{country.superficie}}</p></td>
       </ng-template>
       <td *ngIf="showEditForm && countryIndex === index; else displayContinent">
         <input [(ngModel)]="countryEdited.continent" name="continent" placeholder="Continent" required type="text">
       </td>
       <ng-template #displayContinent>
-        <td>{{country.continent}}</td>
+        <td><p class="td-text">{{country.continent}}</p></td>
       </ng-template>
       <td *ngIf="showEditForm && countryIndex === index; else displayPIB">
         <input [(ngModel)]="countryEdited.pib" name="pib" placeholder="PIB" required type="number">
       </td>
       <ng-template #displayPIB>
-        <td>{{country.pib}}</td>
+        <td><p class="td-text">{{country.pib}}</p></td>
       </ng-template>
       <td *ngIf="showEditForm && countryIndex === index; else displayImage">
         <input [(ngModel)]="countryEdited.image" name="image" placeholder="image" required type="text">
       </td>
       <ng-template #displayImage>
-        <td>{{country.image}}</td>
+        <td><p class="td-text">{{country.image}}</p></td>
       </ng-template>
       <td>
         <img
@@ -56,7 +56,7 @@
         />
 
         <img
-          (click)="cancelEdit()"
+          (click)="showEditForm ? cancelEdit() : viewCountry(country)"
           [src]="showEditForm && countryIndex === index ? '../../../../assets/cross.svg' : '../../../../assets/eye.svg'" alt="Edit" height="20px"
           width="20px"/>
       </td>
