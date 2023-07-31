@@ -44,9 +44,8 @@ export class CountriesComponent {
   }
 
   viewCountry(country: Country) {
-    console.log(country);
     localStorage.setItem("countries", JSON.stringify(this.countries));
-    this.router.navigate(["country", country.nom], {state: country}).then(r => console.log(r));
+    this.router.navigate(["country", country.nom], {state: country});
   }
 
 }
