@@ -15,8 +15,8 @@
 .country-info {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 50%;
   height: 100%;
   p {
@@ -28,7 +28,7 @@
 
 .country-image {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   height: 100%;
   width: 50%;
   img {
