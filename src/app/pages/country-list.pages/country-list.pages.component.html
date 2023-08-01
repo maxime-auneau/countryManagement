@@ -8,7 +8,7 @@
              placeholder="Nom du pays" type="text">
     </div>
     <div class="export-button">
-      <button name="button" type="button">Exporter en CSV</button>
+      <button name="button" type="button" (click)="exportData()">Exporter en CSV</button>
     </div>
     <div class="add-country-button">
       <button (click)="showAddCountryForm = !showAddCountryForm" name="button" type="button">Ajouter</button>

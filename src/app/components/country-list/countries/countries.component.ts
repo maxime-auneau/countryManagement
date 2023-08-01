@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Country} from "../../../models/country.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-countries',
@@ -14,6 +15,8 @@ export class CountriesComponent {
 
   @Input() countries: Country[] = [];
   @Output() countryEdit = new EventEmitter<{ index: number, newCountry: Country }>();
+
+  constructor(private router: Router) {}
 
   openForm(country: Country, index: number): void {
     this.countryIndex = index;
@@ -39,4 +42,10 @@ export class CountriesComponent {
     this.countryIndex = null;
     this.countryEdited = new Country(0, "", 0, "", "", 0, "");
   }
+
+  viewCountry(country: Country) {
+    localStorage.setItem("countries", JSON.stringify(this.countries));
+    this.router.navigate(["country", country.nom], {state: country});
+  }
+
 }
