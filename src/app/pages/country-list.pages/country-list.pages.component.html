@@ -1,0 +1,41 @@
+<section>
+  <div class="header-container">
+    <div class="title">
+      <h3>Gestion des pays</h3>
+    </div>
+    <div class="search-bar">
+      <input (input)="updateFilteredCountries(searchTerm)" [(ngModel)]="searchTerm" class="input-search" name="nom"
+             placeholder="Nom du pays" type="text">
+    </div>
+    <div class="export-button">
+      <button name="button" type="button" (click)="exportData()">Exporter en CSV</button>
+    </div>
+    <div class="add-country-button">
+      <button (click)="showAddCountryForm = !showAddCountryForm" name="button" type="button">Ajouter</button>
+    </div>
+  </div>
+  <div *ngIf="showAddCountryForm" class="modal-add-country">
+    <form (ngSubmit)="createCountry()">
+      <img (click)="showAddCountryForm = !showAddCountryForm" alt="close" class="close-button" src="assets/cross.svg">
+      <label for="nom">Nom du pays</label>
+      <input [(ngModel)]="country.nom" id="nom" name="nom" type="text">
+      <label for="population">Population</label>
+      <input [(ngModel)]="country.population" id="population" name="population" type="number">
+      <label for="superficie">Superficie</label>
+      <input [(ngModel)]="country.superficie" id="superficie" name="superficie" type="text">
+      <label for="continent">Continent</label>
+      <input [(ngModel)]="country.continent" id="continent" name="continent" type="text">
+      <label for="pib">Produit Interieur Brut</label>
+      <input [(ngModel)]="country.pib" id="pib" name="PIB" type="number">
+      <label for="image">Image</label>
+      <input [(ngModel)]="country.image" id="image" name="image" type="text">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+
+<app-countries
+  (countryEdit)="updatedCountries($event)"
+  [countries]="displayedCountries">
+</app-countries>
+
